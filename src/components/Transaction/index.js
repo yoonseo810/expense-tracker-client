@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
+import { formatNumber } from '../../util/format';
 
 const Transaction = ({ transaction }) => {
   const { deleteTransaction } = useContext(GlobalContext);
@@ -10,10 +11,10 @@ const Transaction = ({ transaction }) => {
     <li className={amount < 0 ? 'minus' : 'plus'}>
       {text}
       <span>
-        {sign}${Math.abs(amount)}
+        {sign}${formatNumber(Math.abs(amount))}
       </span>
       <button
-        onClick={() => deleteTransaction(transaction.id)}
+        onClick={() => deleteTransaction(transaction._id)}
         className="delete-btn"
       >
         x
